@@ -18,8 +18,13 @@ class UsersController < ApplicationController
 
 
     get '/signup' do
+        erb :signup
+    end
+
+    post '/users' do
 
     end
+    
 
     get '/users/:id' do
         "this will be the users show route."
