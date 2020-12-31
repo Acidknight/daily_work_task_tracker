@@ -23,13 +23,30 @@ class DailyTasksController < ApplicationController
 
     get '/daily_task_entries/:id/edit' do 
         set_daily_task_entry
-        erb :'/daily_task_entries/edit'
+        if logged_in?
+         if @daily_task_entries.user == current_user
+            erb :'/daily_task_entries/edit'
+         else 
+            redirect "users/#{current_user.id}"
+         end
+        else
+            redirect '/'
+        end
     end
 
     patch '/daily_task_entries/:id' do 
         set_daily_task_entry
-        @daily_task_entries.update(title: params[:title], date: params[:date], description: params[:description], time: params[:time], notes: params[:notes])
-        redirect "/daily_task_entries/#{@daily_task_entries.id}"
+        if logged_in?
+            if @daily_task_entries.user == current_user
+              @daily_task_entries.update(title: params[:title], date: params[:date], description: params[:description], time: params[:time], notes: params[:notes])
+              redirect "/daily_task_entries/#{@daily_task_entries.id}"
+            else
+                redirect "users/#{current_user.id}"
+            end
+            else
+                redirect '/'
+        end
+
     end
 
     private
