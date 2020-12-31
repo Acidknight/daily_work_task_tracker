@@ -22,6 +22,10 @@ class DailyTasksController < ApplicationController
         erb :'/daily_task_entries/show'
     end
 
+    get '/daily_task_entries/:id/edit' do 
+        erb :'/daily_task_entries/edit'
+    end
+
 
 
 end
