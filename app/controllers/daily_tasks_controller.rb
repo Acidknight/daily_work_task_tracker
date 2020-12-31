@@ -1,5 +1,11 @@
 class DailyTasksController < ApplicationController
 
+    get '/daily_task_entries' do
+        @daily_task_entries = DailyTaskEntry.all
+        erb :'daily_task_entries/index'
+    end
+
+
     get '/daily_task_entries/new' do
         erb :'/daily_task_entries/new'
     end
