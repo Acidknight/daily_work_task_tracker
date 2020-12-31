@@ -1,2 +1,14 @@
+Your tasks.
+<% @daily_task_entries.each do |daily_task_entry| %>
+    <h2><%= daily_task_entry.title %></h2><br>
+    <label for="title">Date:</label>
+    <%= daily_task_entry.date %><br>
+    <label for="title">Description:</label>
+    <%= daily_task_entry.description %><br>
+    <label for="title">Time:</label>
+    <%= daily_task_entry.time %><br>
+    <label for="title">Notes:</label>
+    <%= daily_task_entry.notes %>
+    <br><br>
 
-index page!
+<% end %>
