@@ -14,10 +14,12 @@ class DailyTasksController < ApplicationController
             redirect "/daily_task_entries/#{@daily_task_entries.id}"
         else
             redirect '/daily_task_entries/new'
-        end
+        end   
+    end
 
-            
-
+    get '/daily_task_entries/:id' do 
+        @daily_task_entries = DailyTaskEntry.find(params[:id])
+        erb :'/daily_task_entries/show'
     end
 
 
