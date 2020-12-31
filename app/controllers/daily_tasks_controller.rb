@@ -23,6 +23,7 @@ class DailyTasksController < ApplicationController
     end
 
     get '/daily_task_entries/:id/edit' do 
+        @daily_task_entries = DailyTaskEntry.find(params[:id])
         erb :'/daily_task_entries/edit'
     end
 
