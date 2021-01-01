@@ -43,7 +43,7 @@ class DailyTasksController < ApplicationController
     patch '/daily_task_entries/:id' do 
         set_daily_task_entry
         if logged_in?
-            if @daily_task_entries.user == current_user
+            if @daily_task_entries.user == current_user && params[:title] != ""
               @daily_task_entries.update(title: params[:title], date: params[:date], description: params[:description], time: params[:time], notes: params[:notes])
               redirect "/daily_task_entries/#{@daily_task_entries.id}"
             else
