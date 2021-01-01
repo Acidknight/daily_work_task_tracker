@@ -7,6 +7,7 @@ class CreateDailyTasks < ActiveRecord::Migration
         t.string :time
         t.string :notes
         t.string :user_id
+        t.string :name
   
         t.timestamps null: false
       end
