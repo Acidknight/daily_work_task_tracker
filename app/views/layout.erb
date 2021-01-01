@@ -15,9 +15,11 @@
   </head>
   <body>
   <div class="nav">
+  <% if logged_in? %>
   <a href="/logout">Log Out</a>
   <a href="/daily_task_entries">Daily Tasks</a>
   <a href="/daily_task_entries/new">New Daily Task Entry</a>
+  <% end %>
   </div>
     <div class="wrapper">
 
