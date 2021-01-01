@@ -55,6 +55,16 @@ class DailyTasksController < ApplicationController
 
     end
 
+    delete '/daily_task_entries/:id' do 
+        set_daily_task_entry
+        if authorized_to_edit?(@daily_task_entries)
+            @daily_task_entries.destroy
+            redirect '/daily_task_entries'
+        else
+            redirect '/daily_task_entries'
+        end
+    end
+
     private
 
     def set_daily_task_entry
