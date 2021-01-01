@@ -1,4 +1,4 @@
-class DailyTaskEntry < ActiveRecord::Base
+class DailyTaskEntries < ActiveRecord::Base
 
     belongs_to :user
 

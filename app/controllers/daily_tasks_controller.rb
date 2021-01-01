@@ -1,7 +1,7 @@
 class DailyTasksController < ApplicationController
 
     get '/daily_task_entries' do
-        @daily_task_entries = DailyTaskEntry.all
+        @daily_task_entries = DailyTaskEntries.all
         erb :'daily_task_entries/index'
     end
 
@@ -15,7 +15,7 @@ class DailyTasksController < ApplicationController
             redirect '/'
         end
         if params[:title] && params[:date] && params[:description] && params[:time] && params[:notes] != ""
-            @daily_task_entries = DailyTaskEntry.create(title: params[:title], date: params[:date], description: params[:description], time: params[:time], notes: params[:notes], user_id: current_user.id)
+            @daily_task_entries = DailyTaskEntries.create(title: params[:title], date: params[:date], description: params[:description], time: params[:time], notes: params[:notes], user_id: current_user.id)
             redirect "/daily_task_entries/#{@daily_task_entries.id}"
         else
             redirect '/daily_task_entries/new'
@@ -58,7 +58,7 @@ class DailyTasksController < ApplicationController
     private
 
     def set_daily_task_entry
-        @daily_task_entries = DailyTaskEntry.find(params[:id])
+        @daily_task_entries = DailyTaskEntries.find(params[:id])
     end
 
 

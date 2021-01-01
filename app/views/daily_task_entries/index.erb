@@ -1,6 +1,8 @@
-Your tasks.
+All tasks.
 <% @daily_task_entries.each do |daily_task_entry| %>
-    <h2><a href="/daily_task_entries/<%= daily_task_entry.id %>"><%= daily_task_entry.title %></a></h2><br>
+    <h2><a href="/daily_task_entries/<%= daily_task_entry.id %>"><%= daily_task_entry.title %></a></h2>
+    <br>
+    <%= daily_task_entry.created_at %><br>
     <label for="date">Date:</label>
     <%= daily_task_entry.date %><br>
     <label for="description">Description:</label>
@@ -9,6 +11,7 @@ Your tasks.
     <%= daily_task_entry.time %><br>
     <label for="notes">Notes:</label>
     <%= daily_task_entry.notes %><br>
+    
     <br><br>
 
 <% end %>
