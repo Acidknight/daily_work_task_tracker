@@ -13,6 +13,11 @@ Show page for daily task entries.<br>
 
 <% if authorized_to_edit?(@daily_task_entries) %>
 <a href="/daily_task_entries/<%= @daily_task_entries.id %>/edit">Edit Entry</a>
+<br><br>
+<form class="" action="/daily_task_entries/<%= @daily_task_entries.id %>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" name="" value="Delete Task">
+  </form>
 
 <% end %>
 
