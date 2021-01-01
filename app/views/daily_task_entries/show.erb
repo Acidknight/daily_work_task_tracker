@@ -11,5 +11,8 @@ Show page for daily task entries.<br>
 <label for="notes">Notes:</label>
 <p><%= @daily_task_entries.notes %></p>
 
+<% if current_user == @daily_task_entries.user %>
 <a href="/daily_task_entries/<%= @daily_task_entries.id %>/edit">Edit Entry</a>
+
+<% end %>
 
