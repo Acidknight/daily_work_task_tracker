@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
     post '/login' do 
         @user = User.find_by(email: params[:email])
-        if @user.authenticate(params[:password])
+        if @user.authenticate(params[:password]) && params[:email] != "" && params[:password] != ""
             session[:user_id] = @user.id
             puts session
             redirect "users/#{@user.id}"
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
     post '/users' do
         if params[:name] != "" && params[:email] != "" && params[:password] != ""
-            @user = User.create(params)
+            @user = User.create(params[:name])
             session[:user_id] = @user.id
             redirect "/users/#{@user.id}"
         else
