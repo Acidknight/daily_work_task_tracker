@@ -1,6 +1,6 @@
 class CreateDailyTasks < ActiveRecord::Migration
     def change
-      create_table :daily_tasks do |t|
+      create_table :daily_task_entries do |t|
         t.string :title
         t.string :date 
         t.string :description
