@@ -17,6 +17,10 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get '/users/' do
+    redirect '/signup'
+  end
+
   helpers do
 
     def logged_in?
