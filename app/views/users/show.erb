@@ -1,4 +1,8 @@
 <h2> <%= @user.name %>'s Show Page<h2>
 
+<% if flash[:edit] %>
+  <h6><%= flash[:edit] %></h6>
+<% end %>
+
 <h3>Email: </h3>
 <h4><%= @user.email %></h4>
