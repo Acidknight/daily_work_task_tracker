@@ -13,6 +13,7 @@ class UsersController < ApplicationController
             redirect "users/#{user.id}"
 
         else
+            flash[:message] = "Your email address or password were incorrect, please try again, or sign up."
             redirect '/login'
 
         end
@@ -30,8 +31,8 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect "/users/#{@user.id}"
         else
+            flash[:dupe] = "Fields cannot be left empty, please fill out your information."
             redirect '/signup'
-
         end
 
     end

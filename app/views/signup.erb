@@ -1,5 +1,7 @@
 <h2>Sign up!<h2>
-
+<% if flash[:dupe] %>
+  <h6><%= flash[:dupe] %></h6>
+<% end %>
 <form class="" action="/users" method="post">
 <label for="name">Name: </label>
 <input type="text" name="name" value="">
