@@ -75,10 +75,12 @@ class UsersController < ApplicationController
     delete '/users/:id' do 
         set_users
         if logged_in?
+         if @user == current_user
             @user.destroy
             redirect '/'
-        else
-            redirect '/users/:id'
+         else
+            redirect "/users/#{@current_user.id}"
+         end 
         end
     end
 
