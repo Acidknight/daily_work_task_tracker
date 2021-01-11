@@ -1,0 +1,11 @@
+<h3>Edit your information<h3>
+
+<form class="" action="/users/<%= @user.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="name">Name:</label>
+  <textarea name="name" style="width:auto; height:auto;"><%= @user.name%></textarea><br>
+  <label for="email">Email:</label>
+  <textarea name="email" style="width:auto; height:auto;"><%= @user.email%></textarea><br>
+  <input type="submit" name="" value="Update Information">
+
+</form>

@@ -42,6 +42,35 @@ class UsersController < ApplicationController
         erb :'/users/show'
     end
 
+    get '/users/:id/edit' do 
+        set_users
+        if logged_in?
+         if @user == current_user
+            erb :'/users/edit'
+         else 
+            redirect "users/#{current_user.id}"
+         end
+        else
+            redirect '/'
+        end
+    end
+
+    patch '/users/:id' do 
+        set_users
+        if logged_in?
+            if @user == current_user && params[:name] != "" && params[:email] != ""
+              @user.update(name: params[:name], email: params[:email])
+              redirect "/users/#{@user.id}"
+            else
+                flash[:edit] = "Edit not allowed, fields must not be empty."
+                redirect "users/#{current_user.id}"
+            end
+            else
+                redirect '/'
+        end
+
+    end
+
     get '/logout' do 
         session.clear
         redirect '/'
