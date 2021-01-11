@@ -14,9 +14,11 @@ class DailyTasksController < ApplicationController
         if !logged_in?
             redirect '/'
         end
-        if params[:title] && params[:date] && params[:description] && params[:time] && params[:notes] != ""
+        if params[:title] != "" && params[:date] != "" && params[:description] != "" && params[:time] != "" && params[:notes] != ""
             @daily_task_entries = DailyTaskEntries.create(title: params[:title], date: params[:date], description: params[:description], time: params[:time], notes: params[:notes], user_id: current_user.id)
+            if @daily_task_entries.valid?
             redirect "/daily_task_entries/#{@daily_task_entries.id}"
+            end
         else
             flash[:invalidtask] = "Fields cannot be left empty, please fill out all information."
             redirect '/daily_task_entries/new'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201229090925) do
+ActiveRecord::Schema.define(version: 20210111195232) do
 
   create_table "daily_task_entries", force: :cascade do |t|
     t.string   "title"
@@ -20,17 +20,6 @@ ActiveRecord::Schema.define(version: 20201229090925) do
     t.string   "time"
     t.string   "notes"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "daily_tasks", force: :cascade do |t|
-    t.string   "title"
-    t.string   "date"
-    t.string   "description"
-    t.string   "time"
-    t.string   "notes"
-    t.string   "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

@@ -38,13 +38,19 @@ class UsersController < ApplicationController
     end
 
     get '/users/:id' do
-        @user = User.find_by(id: params[:id])
+        set_users
         erb :'/users/show'
     end
 
     get '/logout' do 
         session.clear
         redirect '/'
+    end
+
+    private
+
+    def set_users
+        @user = User.find_by(id: params[:id])
     end
 
 end
