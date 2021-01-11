@@ -9,7 +9,7 @@ class UsersController < ApplicationController
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password]) && params[:email] != "" && params[:password] != ""
             session[:user_id] = user.id
-            puts session
+            
             redirect "users/#{user.id}"
 
         else
@@ -59,7 +59,8 @@ class UsersController < ApplicationController
         set_users
         if logged_in?
             if @user == current_user && params[:name] != "" && params[:email] != ""
-              @user.update(name: params[:name], email: params[:email])
+              @user.update(name: params[:name])
+              @user.update(email: params[:email])
               redirect "/users/#{@user.id}"
             else
                 flash[:edit] = "Edit not allowed, fields must not be empty."
@@ -69,6 +70,16 @@ class UsersController < ApplicationController
                 redirect '/'
         end
 
+    end
+
+    delete '/users/:id' do 
+        set_users
+        if logged_in?
+            @user.destroy
+            redirect '/'
+        else
+            redirect '/users/:id'
+        end
     end
 
     get '/logout' do 
