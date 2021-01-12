@@ -9,7 +9,7 @@ class UsersController < ApplicationController
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password]) && params[:email] != "" && params[:password] != ""
             session[:user_id] = user.id
-            
+            puts session
             redirect "users/#{user.id}"
 
         else
@@ -39,7 +39,14 @@ class UsersController < ApplicationController
 
     get '/users/:id' do
         set_users
-        erb :'/users/show'
+        if logged_in?
+            if @user == current_user
+               erb :'/users/show'
+            else
+                flash[:dupe] = "Action not allowed."
+                redirect "users/#{current_user.id}"
+            end
+        end
     end
 
     get '/users/:id/edit' do 
@@ -79,7 +86,7 @@ class UsersController < ApplicationController
             @user.destroy
             redirect '/'
          else
-            redirect "/users/#{@current_user.id}"
+            redirect "/users/#{@current_user}"
          end 
         end
     end
